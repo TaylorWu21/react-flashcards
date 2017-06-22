@@ -3,7 +3,7 @@ import { Grid } from 'semantic-ui-react';
 
 import FlashCard from './FlashCard';
 
-const FlashCardList = ({ flashcards, flipCard, deleteCard, updateCard }) => {
+const FlashCardList = ({ flashcards, flipCard, deleteCard, updateCard, gotRight, gotWrong }) => {
   const cards = flashcards.map( card => {
     return (
       <Grid.Column key={card.id}>
@@ -12,6 +12,8 @@ const FlashCardList = ({ flashcards, flipCard, deleteCard, updateCard }) => {
           flipCard={flipCard} 
           deleteCard={deleteCard}
           updateCard={updateCard}
+          gotRight={gotRight}
+          gotWrong={gotWrong}
         />
       </Grid.Column>
     );

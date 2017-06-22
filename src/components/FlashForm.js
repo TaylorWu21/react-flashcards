@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Form } from 'semantic-ui-react'
 
 const styles = {
-  formMargin: { marginBottom: '30px' }
+  formMargin: { padding: '5px' }
 }
 
 class FlashForm extends React.Component {
@@ -33,19 +33,21 @@ class FlashForm extends React.Component {
     return(
       <Form onSubmit={this.handleSubmit} style={styles.formMargin}>
         <Form.Field>
-          <label>Front</label>
+          <label>Question</label>
           <input 
-            placeholder='Front' 
+            placeholder='Question' 
             value={this.state.front}
-            onChange={ (e) => this.setState({ front: e.target.value }) } 
+            onChange={ (e) => this.setState({ front: e.target.value }) }
+            required
           />
         </Form.Field>
         <Form.Field>
-          <label>Back</label>
+          <label>Answer</label>
           <input 
-            placeholder='Back'
+            placeholder='Answer'
             value={this.state.back}
             onChange={ (e) => this.setState({ back: e.target.value }) }
+            required
           />
         </Form.Field>
         <Button type='submit' primary>Submit</Button>
