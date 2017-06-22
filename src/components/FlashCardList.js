@@ -8,7 +8,7 @@ const FlashCardList = ({ flashcards, flipCard, deleteCard, updateCard }) => {
     return (
       <Grid.Column key={card.id}>
         <FlashCard 
-          {...card} 
+          card={card} 
           flipCard={flipCard} 
           deleteCard={deleteCard}
           updateCard={updateCard}

@@ -43,7 +43,7 @@ class App extends Component {
     return (
       <Container text>
         <Header as='h2' textAlign='center'>Flash Cards</Header>
-        <FlashForm addFlashCard={this.addFlashCard} />
+        <FlashForm addFlashCard={this.addFlashCard} updateCard ={this.updateCard} />
         <FlashCardList 
           flashcards={this.state.flashcards} 
           flipCard={this.flipCard} 

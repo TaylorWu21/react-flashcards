@@ -8,13 +8,28 @@ const styles = {
 class FlashForm extends React.Component {
   state = { front: '', back: '' };
 
+  componentDidMount() {
+    if(this.props.card) {
+      const { card: { front, back } } = this.props
+      this.setState({ front, back })
+    }
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.addFlashCard(this.state.front, this.state.back);
+    const { front, back } = this.state;
+    if(this.props.card) {
+      this.props.updateCard(front, back, this.props.card.id)
+      this.props.toggleEdit();
+    } else {
+      this.props.addFlashCard(front, back);
+    }
     this.setState({ front: '', back: '' });
   }
 
   render() {
+    const { toggleEdit, card } = this.props;
+
     return(
       <Form onSubmit={this.handleSubmit} style={styles.formMargin}>
         <Form.Field>
@@ -34,6 +49,11 @@ class FlashForm extends React.Component {
           />
         </Form.Field>
         <Button type='submit' primary>Submit</Button>
+        { card ? 
+            <Button type='button' onClick={ () => toggleEdit() } color='orange'>Cancel</Button> 
+          : 
+            null 
+        }
       </Form>
     );
   }
